@@ -16,138 +16,29 @@
       <h1>타바타 타이머</h1>
     </header>
     <div class="top-margin">
-      <main class="hidden">
-        <ul>
-          <li>
-            <span title="시작"><i class="far fa-play-circle"></i></span>
-            <div>
-              <p>하체 타바타</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i title="수정" class="fas fa-edit"></i
-              ><i title="삭제" class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span><i class="far fa-play-circle"></i></span>
-            <div>
-              <p class="title">하체 타바타바타바타바타바타바타바타바타</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i class="fas fa-edit"></i><i class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span><i class="far fa-play-circle"></i></span>
-            <div>
-              <p>하체 타바타fdsafsfasdfasdf</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i class="fas fa-edit"></i><i class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span title="시작"><i class="far fa-play-circle"></i></span>
-            <div>
-              <p>하체 타바타</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i title="수정" class="fas fa-edit"></i
-              ><i title="삭제" class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span><i class="far fa-play-circle"></i></span>
-            <div>
-              <p class="title">하체 타바타바타바타바타바타바타바타바타</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i class="fas fa-edit"></i><i class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span><i class="far fa-play-circle"></i></span>
-            <div>
-              <p>하체 타바타fdsafsfasdfasdf</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i class="fas fa-edit"></i><i class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span title="시작"><i class="far fa-play-circle"></i></span>
-            <div>
-              <p>하체 타바타</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i title="수정" class="fas fa-edit"></i
-              ><i title="삭제" class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span><i class="far fa-play-circle"></i></span>
-            <div>
-              <p class="title">하체 타바타바타바타바타바타바타바타바타</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i class="fas fa-edit"></i><i class="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <span><i class="far fa-play-circle"></i></span>
-            <div>
-              <p>하체 타바타fdsafsfasdfasdf</p>
-              <span>50초</span>
-              <span>10초</span>
-              <span>5세트</span>
-            </div>
-            <span class="icons">
-              <i class="fas fa-edit"></i><i class="far fa-trash-alt"></i>
-            </span>
-          </li>
-        </ul>
+      <main>
+        <ul></ul>
       </main>
-      <section>
+      <section class="hidden">
         <form>
-          <input type="text" placeholder="제목" />
-          <input type="number" placeholder="운동시간 (초)" />
-          <input type="number" placeholder="휴식시간 (초)" />
-          <input type="number" placeholder="세트 수" />
+          <input type="hidden" id="hidden" value="" />
+          <input type="text" id="title" placeholder="제목" required />
+          <input type="number" id="work" placeholder="운동시간 (초)" required />
+          <input type="number" id="rest" placeholder="휴식시간 (초)" required />
+          <input type="number" id="count" placeholder="세트 수" required />
           <div>
-            <button class="add">등록</button>
-            <button class="cancel">취소</button>
+            <button type="submit" class="add">등록</button>
+            <button type="button" class="cancel">취소</button>
           </div>
         </form>
       </section>
     </div>
     <footer>
       <ul>
-        <li><i class="fas fa-plus-circle"></i></li>
-        <li><i class="fas fa-ban"></i></li>
+        <li>
+          <i class="fas fa-plus-circle" data-type="icon" data-value="add"></i>
+        </li>
+        <li><i class="fas fa-ban" data-type="icon" data-value="clear"></i></li>
       </ul>
     </footer>
   </body>

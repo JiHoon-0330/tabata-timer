@@ -88,8 +88,12 @@ main > ul > li > div {
   white-space: pre-line;
 }
 main > ul > li > div > span {
+  display: inline;
   color: var(--sub-text-color);
+  font-size: 1.08rem;
+  line-height: 1.08rem;
 }
+
 main > ul > li > span {
   font-size: 1.5rem;
   padding: 0.3em;
