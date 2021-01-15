@@ -19,56 +19,16 @@ document.querySelector("body").addEventListener("click", event => {
   value === "remove" && removeData(id);
 });
 
-const setTimer = data => {
-  const { title, work, rest, count } = data;
-  let readyTime = 5;
-  document.querySelector(".timer__title").textContent = title;
-  document.querySelector(".timer__time").textContent = readyTime--;
-  document.querySelector(".timer__count").textContent = `1 / ${count}`;
-  document.querySelector(".timer__state").textContent = `ready!`;
-  const timeArr = [];
-  for (let i = 0; i < count; i++) {
-    if (i === 0) {
-      timeArr.push(work);
-      continue;
-    }
-    timeArr.push(rest);
-    timeArr.push(work);
-  }
-  const readyInterval = setInterval(() => {
-    if (readyTime <= 1) {
-      clearInterval(readyInterval);
-      runTimer(timeArr, count);
-    }
-    document.querySelector(".timer__time").textContent = readyTime--;
-  }, 1000);
-};
-
-const runTimer = (timeArr, count) => {
-  const len = timeArr.length;
-  let time = timeArr.pop();
-
-  const interval = setInterval(() => {
-    if (time <= 1) {
-      clearInterval(interval);
-      if (timeArr.length !== 0) {
-        runTimer(timeArr, count);
-      }
-    }
-    console.log(timeArr.length);
-    document.querySelector(".timer__time").textContent = time--;
-    document.querySelector(".timer__count").textContent = `${
-      count - parseInt(len / 2)
-    } / ${count}`;
-    document.querySelector(".timer__state").textContent = `${
-      len % 2 === 0 ? `rest` : `work`
-    }`;
-  }, 1000);
-};
-
 const start = id => {
+  whale.sidebarAction.show({
+    url: whale.runtime.getURL("./timer/index.html")
+  });
   getStorage(id, setTimer);
 };
+const setTimer = data => {
+  setStorage({ currentRun: data });
+};
+
 const changeData = id => {
   getStorage(id, setForm);
 };
@@ -134,9 +94,9 @@ const printData = data => {
     </span>
     <div>
       <p class="li__title">${title}</p>
-        <span class="li__work">${work}초</span>        
-        <span class="li__rest">${rest}초</span>
-        <span class="li__count">${count}회</span>
+        <span class="li__work">운동: ${work}초 |</span>        
+        <span class="li__rest">휴식: ${rest}초 |</span>
+        <span class="li__count">세트: ${count}회</span>
       </div>
     </div>
     <span class="icons">
@@ -149,56 +109,16 @@ const printData = data => {
 
 const printAllData = allData => {
   Object.keys(allData).forEach(item => {
+    if (item == "currentRun") {
+      return;
+    }
     printData(allData[item]);
   });
 };
 
-const setStorage = data => {
-  chrome.storage.local.set(data);
-};
-
-const getStorage = (key, callback) => {
-  chrome.storage.local.get(key, result => {
-    if (key) {
-      callback(result[key]);
-    } else {
-      callback(result);
-    }
-  });
-};
-
-const onChangeStorage = () => {
-  chrome.storage.local.onChanged(result => {
-    console.log(result);
-  });
-};
-
-const removeStorage = key => {
-  chrome.storage.local.remove(key);
-};
-
-const clearStorage = () => {
-  if (!confirm("목록을 초기화하시겠습니까?")) {
-    return;
-  }
-  chrome.storage.local.clear();
-  ul.innerHTML = "";
-};
-
-chrome.storage.onChanged.addListener(changes => {
-  const key = Object.keys(changes)[0];
-  if (!changes[key].newValue) {
-    return;
-  }
-  if (!changes[key].oldValue) {
-    printData(changes[key].newValue);
-  } else {
-    changeText(changes[key].oldValue, changes[key].newValue);
-  }
-});
-
 const changeText = (oldValue, newValue) => {
   const keys = Object.keys(oldValue);
+  console.log(oldValue, newValue);
   keys.forEach(key => {
     if (oldValue[key] !== newValue[key]) {
       document.querySelector(
@@ -213,10 +133,11 @@ const setText = (text, type) => {
     case "title":
       return text;
     case "work":
+      return `운동: ${text}초 |`;
     case "rest":
-      return `${text}초`;
+      return `휴식: ${text}초 |`;
     case "count":
-      return `${text}회`;
+      return `세트: ${text}회`;
     default:
       console.log(`unknown type: ${type}`);
   }

@@ -64,34 +64,9 @@ main {
   height: 100%;
 }
 
-.timer {
-  width: 100%;
-  height: 35%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 1px solid black;
-}
-.timer > div {
-  text-align: center;
-}
-.timer__title {
-  font-size: 2rem;
-}
-.timer__time {
-  font-size: 5rem;
-}
-.timer__count {
-  font-size: 2.5rem;
-}
-.timer__state {
-  font-size: 2rem;
-}
-
 .container {
   width: 100%;
-  height: 65%;
+  height: 100%;
   overflow-y: auto;
 }
 .container > ul {
