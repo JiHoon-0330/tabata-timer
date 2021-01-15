@@ -41,8 +41,9 @@ li {
 }
 
 .top-margin {
-  margin-top: 5rem;
+  padding-top: 5rem;
   width: 90%;
+  height: calc(100vh - 5em);
   overflow-y: auto;
 }
 
@@ -60,15 +61,47 @@ header > h1 {
 
 main {
   width: 100%;
+  height: 100%;
 }
-main > ul {
+
+.timer {
+  width: 100%;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+}
+.timer > div {
+  text-align: center;
+}
+.timer__title {
+  font-size: 2rem;
+}
+.timer__time {
+  font-size: 5rem;
+}
+.timer__count {
+  font-size: 2.5rem;
+}
+.timer__state {
+  font-size: 2rem;
+}
+
+.container {
+  width: 100%;
+  height: 65%;
+  overflow-y: auto;
+}
+.container > ul {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-main > ul > li {
+.container > ul > li {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -79,7 +112,7 @@ main > ul > li {
   margin-bottom: 0.3em;
   border-bottom: 1px solid var(--main-text-color);
 }
-main > ul > li > div {
+.container > ul > li > div {
   flex: 1;
   font-weight: 600;
   color: var(--main-text-color);
@@ -87,14 +120,14 @@ main > ul > li > div {
 .title {
   white-space: pre-line;
 }
-main > ul > li > div > span {
+.container > ul > li > div > span {
   display: inline;
   color: var(--sub-text-color);
   font-size: 1.08rem;
   line-height: 1.08rem;
 }
 
-main > ul > li > span {
+.container > ul > li > span {
   font-size: 1.5rem;
   padding: 0.3em;
 }

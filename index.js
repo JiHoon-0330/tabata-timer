@@ -1,5 +1,5 @@
 const main = document.querySelector("main");
-const ul = document.querySelector("main > ul");
+const ul = document.querySelector("main ul");
 const section = document.querySelector("section");
 const form = document.querySelector("form");
 
@@ -14,13 +14,60 @@ document.querySelector("body").addEventListener("click", event => {
   } = event;
   value === "add" && showForm();
   value === "clear" && clearStorage();
-  value === "start" && startTimer(id);
+  value === "start" && start(id);
   value === "change" && changeData(id);
   value === "remove" && removeData(id);
 });
 
-const startTimer = id => {
-  console.log(id);
+const setTimer = data => {
+  const { title, work, rest, count } = data;
+  let readyTime = 5;
+  document.querySelector(".timer__title").textContent = title;
+  document.querySelector(".timer__time").textContent = readyTime--;
+  document.querySelector(".timer__count").textContent = `1 / ${count}`;
+  document.querySelector(".timer__state").textContent = `ready!`;
+  const timeArr = [];
+  for (let i = 0; i < count; i++) {
+    if (i === 0) {
+      timeArr.push(work);
+      continue;
+    }
+    timeArr.push(rest);
+    timeArr.push(work);
+  }
+  const readyInterval = setInterval(() => {
+    if (readyTime <= 1) {
+      clearInterval(readyInterval);
+      runTimer(timeArr, count);
+    }
+    document.querySelector(".timer__time").textContent = readyTime--;
+  }, 1000);
+};
+
+const runTimer = (timeArr, count) => {
+  const len = timeArr.length;
+  let time = timeArr.pop();
+
+  const interval = setInterval(() => {
+    if (time <= 1) {
+      clearInterval(interval);
+      if (timeArr.length !== 0) {
+        runTimer(timeArr, count);
+      }
+    }
+    console.log(timeArr.length);
+    document.querySelector(".timer__time").textContent = time--;
+    document.querySelector(".timer__count").textContent = `${
+      count - parseInt(len / 2)
+    } / ${count}`;
+    document.querySelector(".timer__state").textContent = `${
+      len % 2 === 0 ? `rest` : `work`
+    }`;
+  }, 1000);
+};
+
+const start = id => {
+  getStorage(id, setTimer);
 };
 const changeData = id => {
   getStorage(id, setForm);
