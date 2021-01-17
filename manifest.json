@@ -11,13 +11,9 @@
     "default_icon": {
       "16": "./img/tabata.png"
     },
-    "default_title": "아!맞다",
+    "default_title": "타바타 타이머",
     "use_navigation_bar": false
   },
   "permissions": ["storage"],
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://kit.fontawesome.com/20fc56bb28.js; object-src 'self'",
-  "background": {
-    "scripts": ["eventPage.js"],
-    "persistent": false
-  }
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://kit.fontawesome.com/20fc56bb28.js; object-src 'self'"
 }

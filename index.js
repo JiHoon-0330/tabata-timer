@@ -94,9 +94,9 @@ const printData = data => {
     </span>
     <div>
       <p class="li__title">${title}</p>
-        <span class="li__work">운동: ${work}초 |</span>        
-        <span class="li__rest">휴식: ${rest}초 |</span>
-        <span class="li__count">세트: ${count}회</span>
+        <span class="li__work">${work}초 |</span>        
+        <span class="li__rest">${rest}초 |</span>
+        <span class="li__count">${count}회</span>
       </div>
     </div>
     <span class="icons">
@@ -133,11 +133,11 @@ const setText = (text, type) => {
     case "title":
       return text;
     case "work":
-      return `운동: ${text}초 |`;
+      return `${text}초 |`;
     case "rest":
-      return `휴식: ${text}초 |`;
+      return `${text}초 |`;
     case "count":
-      return `세트: ${text}회`;
+      return `${text}회`;
     default:
       console.log(`unknown type: ${type}`);
   }

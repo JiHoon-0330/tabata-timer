@@ -32,8 +32,7 @@ const getTimer = data => {
   maxIndex = count === 1 ? 1 : (count - 1) * 2 + 1;
   timerTitle.textContent = title;
   timerTime.textContent = readyTime--;
-  timerCount.textContent = `1 / ${count}`;
-  timerState.textContent = `ready!`;
+  timerState.textContent = `준비하세요`;
   timeArr.push(rest);
   timeArr.push(work);
   runTimer();
@@ -82,12 +81,12 @@ const runTimer = currentTime => {
 
     timerTime.textContent = time--;
     timerCount.textContent = `${
-      currentIndex === 1 ? 1 : parseInt(currentIndex / 2)
-    } / ${maxCount}`;
+      currentIndex === 1 ? "" : `${parseInt(currentIndex / 2)} / ${maxCount}`
+    }`;
     timerState.textContent = `${
       currentIndex === 1
-        ? `ready!`
-        : `${currentIndex % 2 === 0 ? `work` : `rest`}`
+        ? `준비하세요`
+        : `${currentIndex % 2 === 0 ? `시작!` : `잠깐 휴식`}`
     }`;
   }, 1000);
 };
